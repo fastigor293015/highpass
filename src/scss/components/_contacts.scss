@@ -1,0 +1,390 @@
+[class*="ground-pane"] { /* Ищем элемент, в классе которого содержится ground-pane */
+  filter: grayscale(1); /* Делаем карту чёрно-белой */
+}
+
+.contacts {
+  &__container {
+    padding-bottom: 68px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    position: relative;
+    grid-template-rows: 467px;
+  }
+
+  &__map {
+    position: relative;
+    grid-column: calc($columns / 12 * 8) span;
+    padding-top: 6px;
+    overflow: hidden;
+  }
+
+  &__form {
+    grid-column: 4 span;
+  }
+
+  &-form {
+    &__subtitle {
+      margin-bottom: 5px;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 0.917;
+      color: $section-black;
+    }
+
+    &__descr {
+      margin-bottom: 14px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.375;
+      color: $gray;
+    }
+
+    &__input-container {
+      margin-bottom: 20px;
+    }
+
+    &__input {
+      width: 100%;
+      height: 50px;
+      padding-left: 23px;
+      border: 1px solid #e9e9e9;
+      color: $section-black;
+      background: #e9e9e9;
+
+      &_comment {
+        height: 150px;
+        padding-top: 17px;
+        resize: none;
+      }
+
+      ~ .js-validate-error-label {
+        background: #e9e9e9;
+      }
+
+      &:focus {
+        ~ .placeholder {
+          color: $gray;
+        }
+      }
+    }
+
+    &__placeholder {
+      color: $gray;
+
+      &_comment {
+        top: 10%;
+      }
+    }
+
+    &__btn {
+      margin-top: -4px;
+    }
+  }
+
+  &__modal {
+    position: absolute;
+    top: 6px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 410px;
+    background: transparentize($section-black, 0.15);
+    transition: transform .2s cubic-bezier(.64,-0.26,.31,1.66);
+
+    &_hidden {
+      .contacts-modal__text {
+        opacity: 0;
+
+        .contacts-modal__phone {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &-modal {
+    &__btn_close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+      height: 20px;
+
+      &:hover {
+        .contacts-modal__icon_close {
+          fill: $orange;
+        }
+      }
+
+      &:focus {
+        .contacts-modal__icon_close {
+          fill: $brown;
+        }
+      }
+
+      &:active {
+        .contacts-modal__icon_close {
+          fill: $maroon;
+        }
+      }
+
+      &:hover {
+        .contacts-modal__icon_open {
+          fill: $orange;
+        }
+      }
+
+      &:focus {
+        .contacts-modal__icon_open {
+          fill: $brown;
+        }
+      }
+
+      &:active {
+        .contacts-modal__icon_open {
+          fill: $maroon;
+        }
+      }
+    }
+
+    &__icon_close {
+      display: none;
+      fill: $footer-gray;
+      transition: fill .2s ease-in-out;
+    }
+
+    &__icon_open {
+      display: none;
+      fill: $footer-gray;
+      transition: fill .2s ease-in-out;
+    }
+
+    &__icon_active {
+      display: block;
+    }
+
+    &__text {
+      max-width: 350px;
+      padding: 48px 20px 20px 30px;
+    }
+
+    &__subtitle {
+      margin-bottom: 5px;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: .916;
+      color: #FFFFFF;
+    }
+
+    &__descr {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 28px;
+      color: $about-gray;
+    }
+
+    &__phone {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      line-height: 1.3125;
+      color: #FFFFFF;
+
+      &::before {
+        content: url(../img/contacts-phone-white.svg);
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  $columns: 8;
+
+  .contacts {
+    &__map {
+      grid-column: calc($columns / 8 * 5) span;
+    }
+
+    &__modal {
+      top: unset;
+      right: 0;
+      display: block;
+      width: auto;
+    }
+
+    &-modal {
+      &__icon_open {
+        transform: rotate(-90deg);
+      }
+
+      &__text {
+        max-width: 330px;
+        padding: 25px 0 19px 30px;
+      }
+
+      &__descr {
+        display: inline;
+      }
+
+      &__phone {
+        display: inline-flex;
+        color: $orange;
+        transform: translate(6px, 1px);
+
+        &::before {
+          content: url(../img/contacts-phone-orange.svg);
+        }
+      }
+    }
+
+    &__form {
+      grid-column: calc($columns / 8 * 3) span;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  $columns: 6;
+
+  .contacts {
+    &__content {
+      gap: 24px;
+    }
+
+    &-modal {
+      &__text {
+        max-width: 440px;
+        padding: 25px 0 22px 30px;
+      }
+
+      &__phone {
+        display: flex;
+        transform: translateY(1px);
+      }
+    }
+
+    &__map {
+      grid-column: $columns span;
+    }
+
+    &__form {
+      grid-column: 4 span;
+    }
+
+    &-form {
+      &__input-container {
+        width: 99.5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  $columns: 2;
+  $container-padding: 21px;
+
+  .contacts {
+    &__content {
+      margin-left: -$container-padding;
+      margin-right: -$container-padding;
+    }
+
+    &__map {
+      grid-column: $columns span;
+      padding: 0;
+    }
+
+    &__form {
+      grid-column: $columns span;
+      padding-left: $container-padding;
+      padding-right: $container-padding;
+    }
+
+    &-form {
+      &__input-container {
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+
+
+  .contacts {
+    &__container {
+      padding-bottom: 48px;
+    }
+
+    &__content {
+      grid-template-rows: 472px;
+    }
+
+    &__title {
+      margin-bottom: 14px;
+    }
+
+    &-modal {
+      &__text {
+        padding: 26px 30px 11px 19px;
+      }
+
+      &__subtitle {
+        margin-bottom: 11px;
+        font-size: 18px;
+        line-height: 1.22;
+      }
+
+      &__descr {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        line-height: 1.286;
+      }
+
+      &__phone {
+        transform: translateX(-3px);
+        font-size: 14px;
+        line-height: 1.286;
+      }
+    }
+
+    &-form {
+      &__subtitle {
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 1.22;
+      }
+
+      &__descr {
+        margin-bottom: 15px;
+        font-size: 14px;
+        line-height: 1.286;
+      }
+
+      &__input {
+        &_comment {
+          height: 150px;
+        }
+      }
+
+      &__placeholder {
+        &_comment {
+          top: 9%;
+        }
+      }
+    }
+  }
+}

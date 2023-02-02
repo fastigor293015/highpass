@@ -1,0 +1,290 @@
+.hero {
+  &__container {
+    padding-top: 35px;
+    padding-bottom: 68px;
+  }
+
+  &__list {
+    grid-template-rows: 349px;
+    grid-auto-rows: 257px;
+  }
+
+  &__item {
+    overflow: hidden;
+  }
+
+  &__item1 {
+    position: relative;
+    grid-column: calc($columns / 2) span;
+    grid-row: 2 span;
+    margin-top: 6px;
+  }
+
+  &__img {
+    img  {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    left: 60px;
+    color: $white;
+  }
+
+  &__author {
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.1875;
+  }
+
+  &__subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1.04;
+  }
+
+  &__date {
+    display: block;
+    margin-bottom: 19px;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1.04;
+  }
+
+  &__marker {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 7px 13px;
+    font-size: 14px;
+    line-height: 1.143;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    line-height: 1.04;
+  }
+
+  &__item2 {
+    grid-column: 6 span;
+    grid-row: 1 span;
+  }
+
+  &__img2 {
+    img  {
+      height: auto;
+    }
+  }
+
+  &__item3 {
+    grid-column: 3 span;
+    grid-row: 1 span;
+  }
+
+  &__item4 {
+    grid-column: 3 span;
+    grid-row: 1 span;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  $columns: 8;
+
+  .hero {
+    &__list {
+      grid-template-rows: 406px;
+      grid-auto-rows: 186px;
+    }
+
+    &__item1 {
+      grid-column: calc($columns / 2) span;
+      margin-top: -1px;
+      padding: 0;
+    }
+
+    &__item2 {
+      grid-column: calc($columns / 2) span;
+    }
+
+    &__img2 {
+      img {
+        height: 332px;
+      }
+    }
+
+    &__item3 {
+      grid-column: calc($columns / 4) span;
+    }
+
+    &__item4 {
+      grid-column: calc($columns / 4) span;
+    }
+
+    &__text {
+      bottom: 31px;
+      left: 30px;
+    }
+
+    &__author {
+      margin-bottom: 9px;
+    }
+
+    &__subtitle {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    &__date {
+      margin-bottom: 21px;
+      font-size: 34px;
+      line-height: 1;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  $columns: 8;
+
+  .hero {
+    &__list {
+      grid-template-columns: repeat($columns, 1fr);
+      grid-template-rows: 291px;
+      grid-auto-rows: 133px;
+      row-gap: 29px;
+    }
+
+    &__item1 {
+      margin: 0;
+    }
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    &__author {
+      margin-bottom: 15px;
+    }
+
+    &__subtitle {
+      line-height: .9;
+      transform: translateX(-2px);
+    }
+
+    &__date {
+      margin-bottom: 23px;
+      line-height: .9;
+      transform: translateX(-2px);
+    }
+
+    &__img2 {
+      img {
+        height: 228px;
+      }
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  $columns: 2;
+
+  .hero {
+    &__list {
+      grid-template-columns: repeat($columns, 1fr);
+      grid-template-rows: 450px 344px 180px;
+    }
+
+    &__item1 {
+      grid-column: calc($columns) span;
+      grid-row: 1 span;
+    }
+
+    &__item2 {
+      grid-column: calc($columns) span;
+    }
+
+    &__img2 {
+      img {
+        height: 305px;
+      }
+    }
+
+    &__item3 {
+      grid-column: calc($columns / 2) span;
+    }
+
+    &__item4 {
+      grid-column: calc($columns / 2) span;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .hero {
+    &__container {
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+
+    &__list {
+      grid-template-rows: 422px 245px 105px;
+    }
+
+    &__text {
+      right: 20px;
+    }
+
+    &__author {
+      margin-bottom: 6px;
+      font-size: 14px;
+      line-height: 1.43;
+    }
+
+    &__subtitle {
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    &__date {
+      margin-bottom: 13px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    &__marker {
+      top: 6px;
+      right: 5px;
+      padding: 4px 7px;
+      font-size: 12px;
+      line-height: 1.167;
+      letter-spacing: -0.2px;
+    }
+
+    &__title {
+      font-size: 18px;
+      line-height: 1.04;
+    }
+
+    &__item2 {
+      margin-top: 6px;
+    }
+
+    &__img2 {
+      img {
+        height: 186px;
+      }
+    }
+  }
+}
